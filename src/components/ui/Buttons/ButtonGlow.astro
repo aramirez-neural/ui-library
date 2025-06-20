@@ -1,0 +1,49 @@
+<button class="btn-glow">Haz clic</button>
+
+<style>
+  .btn-glow {
+    position: relative;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--color-gradient);
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.3s ease;
+    overflow: hidden;
+  }
+
+  .btn-glow::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.2) 0%,
+      transparent 70%
+    );
+    transform: scale(0);
+    transition: transform 0.5s ease;
+    pointer-events: none;
+  }
+
+  .btn-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
+  }
+
+  .btn-glow:hover::before {
+    transform: scale(1);
+  }
+
+  .btn-glow:active {
+    transform: scale(0.98);
+  }
+</style>

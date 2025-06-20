@@ -1,0 +1,67 @@
+<button class="btn-elegant">Haz clic</button>
+
+<style>
+  .btn-elegant {
+    position: relative;
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    background-color: transparent;
+    color: var(--color-text);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    overflow: hidden;
+    transition:
+      color 0.4s ease,
+      transform 0.2s ease;
+    z-index: 0;
+  }
+
+  .btn-elegant::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      var(--color-accent-hover),
+      transparent
+    );
+    opacity: 0.15;
+    transition: left 0.5s ease;
+    z-index: -1;
+  }
+
+  .btn-elegant::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    transition: box-shadow 0.3s ease;
+    z-index: -2;
+  }
+
+  .btn-elegant:hover {
+    color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+
+  .btn-elegant:hover::before {
+    left: 0;
+  }
+
+  .btn-elegant:hover::after {
+    box-shadow: 0 4px 16px rgba(244, 63, 94, 0.15);
+  }
+
+  .btn-elegant:active {
+    transform: scale(0.97);
+  }
+</style>

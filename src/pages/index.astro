@@ -2,56 +2,56 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const el = document.querySelector(".wave-title");
+    if (!el) return;
+
+    const text = el.getAttribute("data-text");
+    el.innerHTML = "";
+
+    [...text].forEach((char) => {
+      if (char === " ") {
+        const space = document.createElement("span");
+        space.className = "spacer";
+        space.innerHTML = "&nbsp;";
+        el.appendChild(space);
+      } else {
+        const span = document.createElement("span");
+        span.textContent = char;
+
+        span.addEventListener("animationend", () => {
+          span.classList.remove("wave-active");
+          span.style.animationDelay = "";
+        });
+
+        el.appendChild(span);
+      }
+    });
+
+    el.addEventListener("mousemove", (e) => {
+      const spans = el.querySelectorAll("span");
+      spans.forEach((span) => {
+        const rect = span.getBoundingClientRect();
+        const distance = Math.abs(e.clientX - (rect.left + rect.width / 2));
+        const delay = Math.min(distance / 1.5, 500); // más lento para efecto grande
+
+        // Solo activa si no está ya animando
+        if (!span.classList.contains("wave-active")) {
+          span.classList.add("wave-active");
+          span.style.animationDelay = `${delay}ms`;
+        }
+      });
+    });
+  });
+</script>
+
 <Layout>
   <h1
     class="wave-title"
     data-text="Bienvenido a mi repositorio de componentes UI"
   >
   </h1>
-
-  <script is:inline>
-    document.addEventListener("DOMContentLoaded", () => {
-      const el = document.querySelector(".wave-title");
-      if (!el) return;
-
-      const text = el.getAttribute("data-text");
-      el.innerHTML = "";
-
-      [...text].forEach((char) => {
-        if (char === " ") {
-          const space = document.createElement("span");
-          space.className = "spacer";
-          space.innerHTML = "&nbsp;";
-          el.appendChild(space);
-        } else {
-          const span = document.createElement("span");
-          span.textContent = char;
-
-          span.addEventListener("animationend", () => {
-            span.classList.remove("wave-active");
-            span.style.animationDelay = "";
-          });
-
-          el.appendChild(span);
-        }
-      });
-
-      el.addEventListener("mousemove", (e) => {
-        const spans = el.querySelectorAll("span");
-        spans.forEach((span) => {
-          const rect = span.getBoundingClientRect();
-          const distance = Math.abs(e.clientX - (rect.left + rect.width / 2));
-          const delay = Math.min(distance / 1.5, 500); // más lento para efecto grande
-
-          // Solo activa si no está ya animando
-          if (!span.classList.contains("wave-active")) {
-            span.classList.add("wave-active");
-            span.style.animationDelay = `${delay}ms`;
-          }
-        });
-      });
-    });
-  </script>
 </Layout>
 
 <style is:global>

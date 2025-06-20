@@ -1,0 +1,49 @@
+<button class="btn-hover button-anim">
+  <span class="btn-hover-txt">Hello</span>
+</button>
+
+<style>
+  .btn-hover {
+    position: relative;
+    padding: 1rem 2.5rem;
+    background-color: transparent;
+    cursor: pointer;
+    border: 2px solid var(--color-border);
+    overflow: hidden;
+    border-radius: 30px;
+    color: var(--color-text);
+    transition: all 0.5s ease-in-out;
+  }
+
+  .btn-hover-txt {
+    position: relative;
+    z-index: 1;
+    font-weight: 800;
+    letter-spacing: 4px;
+  }
+
+  .button-anim::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: all 0.5s ease-in-out;
+    background-color: var(--color-accent);
+    opacity: 0.1;
+    border-radius: 30px;
+    visibility: hidden;
+    height: 10px;
+    width: 10px;
+    z-index: 0;
+  }
+
+  .btn-hover:hover {
+    color: var(--color-surface);
+    border: none;
+  }
+
+  .button-anim:hover::after {
+    visibility: visible;
+    transform: scale(100) translateX(2px);
+  }
+</style>

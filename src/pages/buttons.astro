@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ButtonGlow from "../components/ui/Buttons/ButtonGlow.astro";
+import ButtonElegant from "../components/ui/Buttons/ButtonElegant.astro";
+import ButtonHoverGuay from "../components/ui/Buttons/ButtonHoverGuay.astro";
+---
+
+<Layout>
+  <section class="button-container">
+    <ButtonGlow />
+    <ButtonElegant />
+    <ButtonHoverGuay />
+  </section>
+</Layout>
+
+<style>
+  .button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    justify-content: center;
+    align-content: center;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding: 2rem;
+  }
+</style>
