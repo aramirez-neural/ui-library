@@ -1,0 +1,55 @@
+<div class="card-glow">
+  <div class="card-glow-content">
+    <h3>Título llamativo</h3>
+    <p>Contenido breve de la tarjeta.</p>
+  </div>
+  <div class="card-glow-bar"></div>
+</div>
+
+<style>
+  .card-glow {
+    position: relative;
+    width: 300px;
+    padding: 2rem;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .card-glow-content {
+    z-index: 1;
+  }
+
+  .card-glow-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 6px;
+    width: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent 0%,
+      var(--color-accent) 40%,
+      var(--color-accent-hover) 60%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: glow-move 2.5s linear infinite;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+  }
+
+  @keyframes glow-move {
+    0% {
+      background-position: -100% 0;
+    }
+    100% {
+      background-position: 100% 0;
+    }
+  }
+</style>
