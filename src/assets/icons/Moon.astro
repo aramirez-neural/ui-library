@@ -1,14 +1,39 @@
+---
+const {
+  size = 36,
+  stroke = "black",
+  strokeWidth = 2,
+  class: className = "",
+} = Astro.props;
+---
+
 <svg
   xmlns="http://www.w3.org/2000/svg"
-  width="32"
-  height="32"
+  width={size}
+  height={size}
   fill="none"
   viewBox="0 0 24 24"
-  ><path
-    stroke="#000"
+  stroke={stroke}
+  stroke-width={strokeWidth}
+  class={`moon-icon ${className}`}
+>
+  <path
     stroke-linecap="round"
     stroke-linejoin="round"
-    stroke-width="2"
     d="M3.32 11.684a9 9 0 0 0 17.357 3.348A9 9 0 0 1 8.32 6.683c0-1.18.23-2.32.644-3.353a9.003 9.003 0 0 0-5.645 8.354Z"
-  ></path></svg
->
+  ></path>
+</svg>
+
+<style>
+  .moon-icon {
+    display: inline-block;
+    transition:
+      stroke 0.3s ease,
+      filter 0.4s ease;
+  }
+
+  .moon-icon:hover {
+    stroke: #7c3aed;
+    filter: drop-shadow(0 0 6px #7c3aed) drop-shadow(0 0 16px #7c3aed);
+  }
+</style>

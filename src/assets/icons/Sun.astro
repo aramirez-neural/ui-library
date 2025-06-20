@@ -1,14 +1,38 @@
+---
+const {
+  size = 36,
+  stroke = "white",
+  strokeWidth = 2,
+  class: className = "",
+} = Astro.props;
+---
+
 <svg
   xmlns="http://www.w3.org/2000/svg"
-  width="32"
-  height="32"
+  width={size}
+  height={size}
   fill="none"
   viewBox="0 0 24 24"
-  ><path
-    stroke="#000"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    stroke-width="2"
-    d="M12 3v1m0 16v1m-8-9H3m3.314-5.686L5.5 5.5m12.186.814L18.5 5.5M6.314 17.69l-.814.81m12.186-.81.814.81M21 12h-1m-4 0a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"
-  ></path></svg
+  stroke={stroke}
+  stroke-width={strokeWidth}
+  class={`animated-icon ${className}`}
 >
+  <path
+    d="M12 3v1m0 16v1m-8-9H3m3.314-5.686L5.5 5.5m12.186.814L18.5 5.5M6.314 17.69l-.814.81m12.186-.81.814.81M21 12h-1m-4 0a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"
+    stroke-linecap="round"
+    stroke-linejoin="round"></path>
+</svg>
+
+<style>
+  .animated-icon {
+    transition:
+      filter 0.4s ease,
+      stroke 0.3s ease;
+    display: inline-block;
+  }
+
+  .animated-icon:hover {
+    stroke: #facc15;
+    filter: drop-shadow(0 0 6px #facc15) drop-shadow(0 0 16px #facc15);
+  }
+</style>

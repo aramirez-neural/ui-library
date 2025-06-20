@@ -45,8 +45,8 @@ import Moon from "../../assets/icons/Moon.astro";
 </script>
 
 <button id="theme-toggle" aria-label="Toggle theme" class="theme-toggle">
-  <span class="sun-icon"><Sun /></span>
-  <span class="moon-icon"><Moon /></span>
+  <span class="theme-icon sun-icon"><Sun /></span>
+  <span class="theme-icon moon-icon"><Moon /></span>
 </button>
 
 <style>
@@ -56,10 +56,6 @@ import Moon from "../../assets/icons/Moon.astro";
     font-size: 1.2rem;
     cursor: pointer;
     transition: transform 0.3s ease;
-  }
-
-  .theme-toggle:hover {
-    transform: scale(1.2);
   }
 
   .hidden {
