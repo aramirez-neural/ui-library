@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CardReview from "../components/ui/Cards/CardReview.astro";
+---
+
+<Layout>
+  <section class="card-container">
+    <CardReview />
+  </section>
+</Layout>
+
+<style>
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    justify-content: center;
+    align-content: center;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding: 2rem;
+  }
+</style>
