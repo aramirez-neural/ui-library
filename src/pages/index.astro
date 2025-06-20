@@ -1,7 +1,98 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-	<h1>Hola</h1>
+  <h1
+    class="wave-title"
+    data-text="Bienvenido a mi repositorio de componentes UI"
+  >
+  </h1>
+
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      const el = document.querySelector(".wave-title");
+      if (!el) return;
+
+      const text = el.getAttribute("data-text");
+      el.innerHTML = "";
+
+      [...text].forEach((char) => {
+        if (char === " ") {
+          const space = document.createElement("span");
+          space.className = "spacer";
+          space.innerHTML = "&nbsp;";
+          el.appendChild(space);
+        } else {
+          const span = document.createElement("span");
+          span.textContent = char;
+
+          span.addEventListener("animationend", () => {
+            span.classList.remove("wave-active");
+            span.style.animationDelay = "";
+          });
+
+          el.appendChild(span);
+        }
+      });
+
+      el.addEventListener("mousemove", (e) => {
+        const spans = el.querySelectorAll("span");
+        spans.forEach((span) => {
+          const rect = span.getBoundingClientRect();
+          const distance = Math.abs(e.clientX - (rect.left + rect.width / 2));
+          const delay = Math.min(distance / 1.5, 500); // más lento para efecto grande
+
+          // Solo activa si no está ya animando
+          if (!span.classList.contains("wave-active")) {
+            span.classList.add("wave-active");
+            span.style.animationDelay = `${delay}ms`;
+          }
+        });
+      });
+    });
+  </script>
 </Layout>
+
+<style is:global>
+  .wave-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.05em;
+    cursor: default;
+  }
+
+  .wave-title span {
+    display: inline-block;
+    transform-origin: center bottom;
+  }
+
+  .wave-title .spacer {
+    width: 0.3em;
+    display: inline-block;
+  }
+
+  .wave-title span.wave-active {
+    animation: wave 0.8s ease;
+  }
+
+  @keyframes wave {
+    0% {
+      transform: translateY(0) rotate(0deg) scale(1);
+    }
+    25% {
+      transform: translateY(-20px) rotate(8deg) scale(1.1);
+    }
+    50% {
+      transform: translateY(10px) rotate(-6deg) scale(1.05);
+    }
+    75% {
+      transform: translateY(-5px) rotate(4deg) scale(1.08);
+    }
+    100% {
+      transform: translateY(0) rotate(0deg) scale(1);
+    }
+  }
+</style>
