@@ -5,7 +5,9 @@ import ThemeToggle from "./ui/ThemeToggle.astro";
 
 <header class="header">
   <div class="container">
-    <h1 class="main-header">UI Library</h1>
+    <a href="/">
+      <h1 class="main-header">UI Library</h1>
+    </a>
     <nav class="nav">
       <CustomLink href="/buttons" class="nav-link">Botones</CustomLink>
       <CustomLink href="/" class="nav-link">Input</CustomLink>
@@ -38,6 +40,9 @@ import ThemeToggle from "./ui/ThemeToggle.astro";
   }
 
   /* LOGO */
+  .container a {
+    text-decoration: none;
+  }
   .main-header {
     font-weight: 700;
     font-size: 1.5rem;
