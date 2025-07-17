@@ -1,0 +1,24 @@
+---
+import ResultsCircle from "./ResultsCircle";
+---
+
+<!-- Animación de círculos que se dibujan el borde poco a poco con un círuculo más pequeño a diferentes velocidades -->
+
+<section class="md:py-24 w-full px-4 md:px-0">
+  <div class="w-full flex justify-center gap-0">
+    <ResultsCircle client:visible value="10.000+" label="Familias" delay={0} />
+    <ResultsCircle client:visible value="50+" label="Centros" delay={0.3} />
+    <ResultsCircle
+      client:visible
+      value="1500+"
+      label="Profesionales"
+      delay={0.6}
+    />
+    <ResultsCircle
+      client:visible
+      value="20"
+      label="Comunidades Autónomas"
+      delay={0.9}
+    />
+  </div>
+</section>

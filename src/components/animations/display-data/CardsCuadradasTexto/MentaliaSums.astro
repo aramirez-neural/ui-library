@@ -1,0 +1,17 @@
+---
+import MentaliaSumsGrid from "./MentaliaSumsGrid.jsx";
+---
+
+<!-- Tres cards cuadradas las cuales se pueden hacer click y mostrar un texto bajo ellas. -->
+
+<section id="mentalia-sums" class="min-h-screen py-16 px-4">
+  <div class="h-full m-auto max-w-6xl">
+    <h2 class="text-2xl sm:text-3xl mb-6">Qué es Mentalia y por qué suma</h2>
+
+    <div
+      class="border border-theme-gray rounded-2xl py-6 sm:py-8 px-4 sm:px-6 space-y-6"
+    >
+      <MentaliaSumsGrid client:visible />
+    </div>
+  </div>
+</section>
