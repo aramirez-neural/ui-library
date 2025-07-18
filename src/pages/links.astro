@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CustomLink from "../components/ui/Links/CustomLink.astro";
+import LinkUnderlinedByTheCenter from "../components/ui/Links/LinkUnderlinedByTheCenter.astro";
+---
+
+<Layout>
+  <section class="link-container">
+    <CustomLink href="#">Link</CustomLink>
+    <LinkUnderlinedByTheCenter href="#">Link</LinkUnderlinedByTheCenter>
+  </section>
+</Layout>
+
+<style>
+  .link-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    justify-content: center;
+    align-content: center;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding: 2rem;
+  }
+</style>
